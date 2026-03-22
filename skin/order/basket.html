@@ -1,0 +1,96 @@
+<!--@layout(/layout/basic/layout.html)-->
+
+<div class="basket-page">
+  <div class="breadcrumb">
+    <a href="/">Home</a>
+    <span>/</span>
+    <span>Shopping Bag</span>
+  </div>
+
+  <h1 class="page-title basket-title">Shopping Bag</h1>
+
+  <div module="Order_basket">
+    <div class="basket-layout">
+      <!-- Cart Items -->
+      <div class="basket-items">
+        <div class="basket-item">
+          <div class="basket-item-image">
+            <a href="{$product_link}">
+              <img src="{$product_image}" alt="{$product_name}">
+            </a>
+          </div>
+          <div class="basket-item-info">
+            <div class="basket-item-top">
+              <div class="basket-item-details">
+                <h3 class="basket-item-name">
+                  <a href="{$product_link}">{$product_name}</a>
+                </h3>
+                <p class="basket-item-variant">{$product_option}</p>
+                <p class="basket-item-price">{$product_price}</p>
+              </div>
+              <button class="basket-item-remove" aria-label="Remove">&times;</button>
+            </div>
+            <div class="basket-item-bottom">
+              <div class="basket-qty">
+                <button class="basket-qty-btn" data-action="decrease">&minus;</button>
+                <input type="number" class="basket-qty-input" value="{$product_quantity}" min="1">
+                <button class="basket-qty-btn" data-action="increase">+</button>
+              </div>
+              <p class="basket-item-subtotal">{$product_total}</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Order Summary -->
+      <div class="basket-summary">
+        <h2 class="basket-summary-title">Order Summary</h2>
+        <div class="basket-summary-rows">
+          <div class="basket-summary-row">
+            <span>Subtotal</span>
+            <span>{$total_product_price}</span>
+          </div>
+          <div class="basket-summary-row">
+            <span>Shipping</span>
+            <span>Calculated at checkout</span>
+          </div>
+          <div class="basket-summary-row total">
+            <span>Bag Total</span>
+            <span>{$total_order_price}</span>
+          </div>
+        </div>
+
+        <div class="basket-gift">
+          <label class="basket-gift-label">
+            <input type="checkbox" class="basket-gift-check">
+            <span>Add a gift message</span>
+          </label>
+          <textarea class="basket-gift-textarea" placeholder="Write your message here..." rows="3" style="display:none;"></textarea>
+        </div>
+
+        <a href="/order/orderform.html" class="btn btn-dark basket-checkout-btn">Go To Checkout</a>
+
+        <div class="basket-secure">&#128274; Secure Checkout</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Recommendations -->
+  <section class="section basket-recommendations">
+    <h2 class="section-title">What to Wear Now</h2>
+    <div module="product_listmain_1">
+      <div class="product-grid">
+        <a href="{$product_link}" class="product-card">
+          <div class="product-image">
+            <img src="{$product_image_medium}" alt="{$product_name}">
+            <span class="quick-add">+</span>
+          </div>
+          <div class="product-detail">
+            <p class="product-name">{$product_name}</p>
+            <p class="product-price">{$product_price}</p>
+          </div>
+        </a>
+      </div>
+    </div>
+  </section>
+</div>

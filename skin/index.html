@@ -1,289 +1,103 @@
-<!DOCTYPE html>
-<html lang="ko">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>CEIN. - Fashion E-commerce</title>
-  <link rel="stylesheet" href="css/style.css">
-  <link rel="preconnect" href="https://cdn.jsdelivr.net">
-  <link href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/static/pretendard.min.css" rel="stylesheet">
-</head>
-<body>
+<!--@layout(/layout/basic/main.html)-->
 
-  <!-- Announcement Bar -->
-  <div class="announcement-bar">
-    <p>Complimentary U.S. No-Rush Shipping on orders of $95 or more. <a href="#">Shop now</a></p>
+<!-- Hero Section -->
+<section class="hero">
+  <div class="hero-image">
+    <img src="/images/hero-banner.jpg" alt="Elevate Your Style">
   </div>
+  <div class="hero-text">
+    Elevate Your Style<br>
+    Timeless Fashion, Sustainable<br>
+    Choices
+  </div>
+  <a href="/product/list.html" class="btn btn-light">Shop Now</a>
+</section>
 
-  <!-- Header -->
-  <header class="header">
-    <div class="header-left">
-      <button class="mobile-menu-btn" aria-label="Menu">
-        <svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5">
-          <line x1="3" y1="5" x2="17" y2="5"/>
-          <line x1="3" y1="10" x2="17" y2="10"/>
-          <line x1="3" y1="15" x2="17" y2="15"/>
-        </svg>
-      </button>
-      <a href="/" class="logo">CEIN<span>.</span></a>
-      <nav class="nav-menu">
-        <a href="#">Shop</a>
-        <a href="#">New Arrivals</a>
-        <a href="#">Sales</a>
-        <a href="#">Journal</a>
-      </nav>
-    </div>
-    <div class="header-icons">
-      <a href="#" aria-label="Search">
-        <svg viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.2">
-          <circle cx="6" cy="6" r="4.5"/>
-          <line x1="9.5" y1="9.5" x2="12.5" y2="12.5"/>
-        </svg>
-      </a>
-      <a href="#" class="icon-text">Stores</a>
-      <a href="#" aria-label="Account">
-        <svg viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.2">
-          <circle cx="7" cy="7" r="6"/>
-          <circle cx="7" cy="5.5" r="2"/>
-          <path d="M3 12.5c0-2.2 1.8-4 4-4s4 1.8 4 4"/>
-        </svg>
-      </a>
-      <a href="#" aria-label="Wishlist">
-        <svg viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.2">
-          <path d="M7 12.5s-5.5-3.5-5.5-7A3 3 0 0 1 7 3.5a3 3 0 0 1 5.5 2c0 3.5-5.5 7-5.5 7z"/>
-        </svg>
-        <span class="icon-label">0</span>
-      </a>
-      <a href="#" aria-label="Cart">
-        <svg viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.2">
-          <path d="M3 4h8l-0.5 6H3.5L3 4z"/>
-          <path d="M5 4V3a2 2 0 0 1 4 0v1"/>
-        </svg>
-        <span class="icon-label">2</span>
-      </a>
-    </div>
-  </header>
-
-  <!-- Hero Section -->
-  <section class="hero">
-    <div class="hero-image">
-      <img src="images/hero-banner.jpg" alt="Elevate Your Style">
-    </div>
-    <div class="hero-text">
-      Elevate Your Style<br>
-      Timeless Fashion, Sustainable<br>
-      Choices
-    </div>
-    <a href="#" class="btn btn-light">Shop Now</a>
-  </section>
-
-  <!-- Description + Collection 3-grid -->
-  <section class="section">
+<!-- Description + Collection 3-grid -->
+<section class="section">
+  <div class="description-section">
     <div class="description-text">
       Elevate your lifestyle with a more intelligent, superior wardrobe.<br>
       Our range is crafted sustainably with longevity in mind.
     </div>
-    <div class="section-title" style="display:none;"></div>
-    <div class="collection-grid" style="margin-top:48px;">
-      <a href="#" class="collection-banner">
-        <img src="images/collection-new-arrivals.jpg" alt="New Arrivals">
-        <span class="banner-label">New Arrivals</span>
-      </a>
-      <a href="#" class="collection-banner">
-        <img src="images/collection-casual-edit.jpg" alt="The Casual Edit">
-        <span class="banner-label">The Casual Edit</span>
-      </a>
-      <a href="#" class="collection-banner">
-        <img src="images/collection-best-sellers.jpg" alt="Best-Sellers">
-        <span class="banner-label">Best-Sellers</span>
-      </a>
-    </div>
-  </section>
-
-  <!-- Product List: What to Wear Now -->
-  <section class="section">
-    <h2 class="section-title">What to Wear Now</h2>
-    <div class="product-grid">
-      <a href="#" class="product-card">
-        <div class="product-image">
-          <img src="images/product-01.jpg" alt="Classic Easy Zipper Tote">
-          <span class="quick-add">
-            <svg viewBox="0 0 18 18" fill="none" stroke="#fff" stroke-width="1.5">
-              <line x1="9" y1="4" x2="9" y2="14"/>
-              <line x1="4" y1="9" x2="14" y2="9"/>
-            </svg>
-          </span>
-        </div>
-        <div class="product-detail">
-          <p class="product-name">Classic Easy Zipper Tote</p>
-          <p class="product-price">$298</p>
-        </div>
-      </a>
-      <a href="#" class="product-card">
-        <div class="product-image">
-          <img src="images/product-02.jpg" alt="Concertina Phone Bag">
-          <span class="quick-add">
-            <svg viewBox="0 0 18 18" fill="none" stroke="#fff" stroke-width="1.5">
-              <line x1="9" y1="4" x2="9" y2="14"/>
-              <line x1="4" y1="9" x2="14" y2="9"/>
-            </svg>
-          </span>
-        </div>
-        <div class="product-detail">
-          <p class="product-name">Concertina Phone Bag</p>
-          <p class="product-price">$248</p>
-        </div>
-      </a>
-      <a href="#" class="product-card">
-        <div class="product-image">
-          <img src="images/product-03.jpg" alt="Wool Cashmere Sweater Coat">
-          <span class="quick-add">
-            <svg viewBox="0 0 18 18" fill="none" stroke="#fff" stroke-width="1.5">
-              <line x1="9" y1="4" x2="9" y2="14"/>
-              <line x1="4" y1="9" x2="14" y2="9"/>
-            </svg>
-          </span>
-        </div>
-        <div class="product-detail">
-          <p class="product-name">Wool Cashmere Sweater Coat</p>
-          <p class="product-price">$398</p>
-        </div>
-      </a>
-      <a href="#" class="product-card">
-        <div class="product-image">
-          <img src="images/product-04.jpg" alt="Single-Origin Cashmere Beanie">
-          <span class="quick-add">
-            <svg viewBox="0 0 18 18" fill="none" stroke="#fff" stroke-width="1.5">
-              <line x1="9" y1="4" x2="9" y2="14"/>
-              <line x1="4" y1="9" x2="14" y2="9"/>
-            </svg>
-          </span>
-        </div>
-        <div class="product-detail">
-          <p class="product-name">Single-Origin Cashmere Beanie</p>
-          <p class="product-price">$98</p>
-        </div>
-      </a>
-      <a href="#" class="product-card">
-        <div class="product-image">
-          <img src="images/product-05.jpg" alt="Alpaca Wool Cropped Cardigan">
-          <span class="quick-add">
-            <svg viewBox="0 0 18 18" fill="none" stroke="#fff" stroke-width="1.5">
-              <line x1="9" y1="4" x2="9" y2="14"/>
-              <line x1="4" y1="9" x2="14" y2="9"/>
-            </svg>
-          </span>
-        </div>
-        <div class="product-detail">
-          <p class="product-name">Alpaca Wool Cropped Cardigan</p>
-          <p class="product-price">$248</p>
-        </div>
-      </a>
-    </div>
-  </section>
-
-  <!-- Collection Banners (2-grid) -->
-  <div class="collection-grid-2">
-    <a href="#" class="collection-banner-large">
-      <img src="images/collection-smart-chic.jpg" alt="The Smart Chic">
-      <span class="banner-label">The Smart Chic</span>
-    </a>
-    <a href="#" class="collection-banner-large">
-      <img src="images/collection-ready-to-go.jpg" alt="Ready To Go">
-      <span class="banner-label">Ready To Go</span>
-    </a>
   </div>
 
-  <!-- Quote Section -->
-  <section class="quote-section">
-    <h2 class="quote-title">The Art of Fewer, Better Choices</h2>
-    <p class="quote-text">
-      Opting for quality over quantity means selecting timeless, durable, and responsibly made items.
-      This approach simplifies our lives and fosters a deeper appreciation for our surroundings.
-      Emphasizing longevity and responsible production resonates with a more sustainable and mindful lifestyle.
-    </p>
-  </section>
+  <div class="collection-grid" style="margin-top:48px;">
+    <a href="/product/list.html?cate_no=2" class="collection-banner">
+      <img src="/images/collection-new-arrivals.jpg" alt="New Arrivals">
+      <span class="banner-label">New Arrivals</span>
+    </a>
+    <a href="/product/list.html?cate_no=3" class="collection-banner">
+      <img src="/images/collection-casual-edit.jpg" alt="The Casual Edit">
+      <span class="banner-label">The Casual Edit</span>
+    </a>
+    <a href="/product/list.html?cate_no=4" class="collection-banner">
+      <img src="/images/collection-best-sellers.jpg" alt="Best-Sellers">
+      <span class="banner-label">Best-Sellers</span>
+    </a>
+  </div>
+</section>
 
-  <!-- Shop Instagram -->
-  <section class="section">
-    <h2 class="section-title center">Shop Instagram</h2>
-    <div class="instagram-grid">
-      <a href="#" class="instagram-item">
-        <img src="images/ig-01.jpg" alt="Instagram">
-      </a>
-      <a href="#" class="instagram-item">
-        <img src="images/ig-02.jpg" alt="Instagram">
-      </a>
-      <a href="#" class="instagram-item">
-        <img src="images/ig-03.jpg" alt="Instagram">
-      </a>
-      <a href="#" class="instagram-item highlight">
-        <img src="images/ig-04.jpg" alt="Instagram">
-        <span class="ig-icon">
-          <svg viewBox="0 0 34 34" fill="white">
-            <rect x="2" y="2" width="30" height="30" rx="8" fill="none" stroke="white" stroke-width="2"/>
-            <circle cx="17" cy="17" r="7" fill="none" stroke="white" stroke-width="2"/>
-            <circle cx="25" cy="9" r="1.5" fill="white"/>
-          </svg>
-        </span>
-      </a>
-      <a href="#" class="instagram-item">
-        <img src="images/ig-05.jpg" alt="Instagram">
+<!-- Product List: What to Wear Now -->
+<section class="section">
+  <h2 class="section-title">What to Wear Now</h2>
+  <div module="product_listmain_2">
+    <div class="product-grid">
+      <a href="{$product_link}" class="product-card">
+        <div class="product-image">
+          <img src="{$product_image_medium}" alt="{$product_name}">
+          <span class="quick-add">+</span>
+        </div>
+        <div class="product-detail">
+          <p class="product-name">{$product_name}</p>
+          <p class="product-price">{$product_price}</p>
+        </div>
       </a>
     </div>
-  </section>
+  </div>
+</section>
 
-  <!-- Footer -->
-  <footer class="footer">
-    <div class="footer-content">
-      <div class="footer-columns">
-        <div class="footer-column">
-          <h4>Contact Us</h4>
-          <ul>
-            <li>+1 (844) 326-6000</li>
-            <li><a href="mailto:info@cein.com">Email Us</a></li>
-            <li>Mon-Fri 9am-3pm PT</li>
-          </ul>
-        </div>
-        <div class="footer-column">
-          <h4>Customers</h4>
-          <ul>
-            <li><a href="#">Start a Return</a></li>
-            <li><a href="#">Return Policy</a></li>
-            <li><a href="#">FAQ</a></li>
-            <li><a href="#">Catalogs and Mailers</a></li>
-            <li><a href="#">About Group Gifting</a></li>
-          </ul>
-        </div>
-        <div class="footer-column">
-          <h4>Company</h4>
-          <ul>
-            <li><a href="#">About Us</a></li>
-            <li><a href="#">Sustainability</a></li>
-            <li><a href="#">Discover Revive</a></li>
-            <li><a href="#">Careers</a></li>
-            <li><a href="#">Privacy Policy</a></li>
-            <li><a href="#">Terms</a></li>
-          </ul>
-        </div>
-      </div>
-      <div class="footer-subscription">
-        <h3>Get the latest new from us</h3>
-        <div class="footer-input-wrap">
-          <div class="footer-input">
-            <input type="email" placeholder="Enter your email address">
-            <p class="legal-text">
-              By signing up, you agree to our <a href="#">Privacy Policy</a> and <a href="#">Terms of Service</a>.
-            </p>
-          </div>
-          <button class="btn btn-dark">Subscribe</button>
-        </div>
-      </div>
-    </div>
-    <div class="footer-copyright">
-      <p>&copy;CEIN</p>
-    </div>
-  </footer>
+<!-- Collection Banners (2-grid) -->
+<div class="collection-grid-2">
+  <a href="/product/list.html?cate_no=5" class="collection-banner-large">
+    <img src="/images/collection-smart-chic.jpg" alt="The Smart Chic">
+    <span class="banner-label">The Smart Chic</span>
+  </a>
+  <a href="/product/list.html?cate_no=6" class="collection-banner-large">
+    <img src="/images/collection-ready-to-go.jpg" alt="Ready To Go">
+    <span class="banner-label">Ready To Go</span>
+  </a>
+</div>
 
-</body>
-</html>
+<!-- Quote Section -->
+<section class="quote-section">
+  <h2 class="quote-title">The Art of Fewer, Better Choices</h2>
+  <p class="quote-text">
+    Opting for quality over quantity means selecting timeless, durable, and responsibly made items.
+    This approach simplifies our lives and fosters a deeper appreciation for our surroundings.
+    Emphasizing longevity and responsible production resonates with a more sustainable and mindful lifestyle.
+  </p>
+</section>
+
+<!-- Shop Instagram -->
+<section class="section">
+  <h2 class="section-title center">Shop Instagram</h2>
+  <div class="instagram-grid">
+    <a href="#" class="instagram-item">
+      <img src="/images/ig-01.jpg" alt="Instagram">
+    </a>
+    <a href="#" class="instagram-item">
+      <img src="/images/ig-02.jpg" alt="Instagram">
+    </a>
+    <a href="#" class="instagram-item">
+      <img src="/images/ig-03.jpg" alt="Instagram">
+    </a>
+    <a href="#" class="instagram-item highlight">
+      <img src="/images/ig-04.jpg" alt="Instagram">
+      <span class="ig-icon">&#9679;</span>
+    </a>
+    <a href="#" class="instagram-item">
+      <img src="/images/ig-05.jpg" alt="Instagram">
+    </a>
+  </div>
+</section>

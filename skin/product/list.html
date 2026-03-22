@@ -1,0 +1,56 @@
+<!--@layout(/layout/basic/layout.html)-->
+
+<div class="product-list-page">
+  <!-- Page Header -->
+  <div class="page-header">
+    <h1 class="page-title">Shop</h1>
+  </div>
+
+  <!-- Category Filters -->
+  <div class="category-filters">
+    <div class="filter-pills">
+      <a href="/product/list.html" class="filter-pill active">All</a>
+      <a href="/product/list.html?cate_no=2" class="filter-pill">Outerwear</a>
+      <a href="/product/list.html?cate_no=3" class="filter-pill">Dresses</a>
+      <a href="/product/list.html?cate_no=4" class="filter-pill">Skirts</a>
+      <a href="/product/list.html?cate_no=5" class="filter-pill">Tops</a>
+      <a href="/product/list.html?cate_no=6" class="filter-pill">Pants</a>
+      <a href="/product/list.html?cate_no=7" class="filter-pill">Knitwear</a>
+      <a href="/product/list.html?cate_no=8" class="filter-pill">Accessories</a>
+    </div>
+    <div class="filter-actions">
+      <button class="btn-filter">Filter</button>
+      <button class="btn-filter">Sort</button>
+    </div>
+  </div>
+
+  <!-- Product Grid -->
+  <div module="product_list_1">
+    <div class="product-listing-grid">
+      <div class="product-listing-card">
+        <a href="{$product_link}">
+          <div class="product-listing-image">
+            <img src="{$product_image_medium}" alt="{$product_name}">
+            <span class="wishlist-btn">&hearts;</span>
+            <span class="quick-add-btn">+</span>
+          </div>
+        </a>
+        <div class="product-listing-info">
+          <a href="{$product_link}">
+            <p class="product-name">{$product_name}</p>
+          </a>
+          <p class="product-price">{$product_price}</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Pagination -->
+  <div class="pagination">
+    <a href="#" class="pagination-prev">&larr;</a>
+    <a href="#" class="pagination-num active">1</a>
+    <a href="#" class="pagination-num">2</a>
+    <a href="#" class="pagination-num">3</a>
+    <a href="#" class="pagination-next">&rarr;</a>
+  </div>
+</div>

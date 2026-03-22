@@ -1,0 +1,114 @@
+<!--@layout(/layout/basic/layout.html)-->
+
+<div class="product-detail-page">
+  <div module="product_detail">
+    <!-- Breadcrumb -->
+    <div class="breadcrumb">
+      <a href="/">Home</a>
+      <span>/</span>
+      <a href="/product/list.html">Shop</a>
+      <span>/</span>
+      <span>{$product_name}</span>
+    </div>
+
+    <!-- Product Detail Main -->
+    <div class="pd-main">
+      <!-- Left: Product Images -->
+      <div class="pd-images">
+        <div class="pd-image-main">
+          <img src="{$product_image_big}" alt="{$product_name}" id="pdMainImage">
+        </div>
+        <div class="pd-image-thumbs">
+          <button class="pd-thumb active">
+            <img src="{$product_image_small}" alt="{$product_name}">
+          </button>
+        </div>
+      </div>
+
+      <!-- Right: Product Info -->
+      <div class="pd-info">
+        <h1 class="pd-name">{$product_name}</h1>
+        <p class="pd-price">{$product_price}</p>
+        <p class="pd-desc">{$product_summary}</p>
+
+        <!-- Size Options -->
+        <div class="pd-option-group">
+          <label class="pd-option-label">Size</label>
+          <div class="pd-size-options">
+            <button class="pd-size-btn">XS</button>
+            <button class="pd-size-btn active">S</button>
+            <button class="pd-size-btn">M</button>
+            <button class="pd-size-btn">L</button>
+            <button class="pd-size-btn">XL</button>
+          </div>
+        </div>
+
+        <!-- Quantity -->
+        <div class="pd-option-group">
+          <label class="pd-option-label">Quantity</label>
+          <div class="pd-quantity">
+            <button class="pd-qty-btn" data-action="decrease">&minus;</button>
+            <input type="number" class="pd-qty-input" value="1" min="1" max="99">
+            <button class="pd-qty-btn" data-action="increase">+</button>
+          </div>
+        </div>
+
+        <!-- Add to Bag -->
+        <button class="btn btn-dark pd-add-to-bag">Add to Bag</button>
+
+        <!-- Wishlist -->
+        <button class="pd-wishlist-btn">&hearts; Add to Wishlist</button>
+
+        <!-- Accordions -->
+        <div class="pd-accordions">
+          <div class="pd-accordion">
+            <button class="pd-accordion-header">
+              <span>Product Info</span>
+              <span class="pd-accordion-arrow">&rsaquo;</span>
+            </button>
+            <div class="pd-accordion-body">
+              <p>{$product_detail}</p>
+            </div>
+          </div>
+          <div class="pd-accordion">
+            <button class="pd-accordion-header">
+              <span>Shipping &amp; Returns</span>
+              <span class="pd-accordion-arrow">&rsaquo;</span>
+            </button>
+            <div class="pd-accordion-body">
+              <p>Free standard shipping on orders over $150. Returns accepted within 30 days.</p>
+            </div>
+          </div>
+          <div class="pd-accordion">
+            <button class="pd-accordion-header">
+              <span>Repair / Renewal</span>
+              <span class="pd-accordion-arrow">&rsaquo;</span>
+            </button>
+            <div class="pd-accordion-body">
+              <p>We offer complimentary repairs and renewal services for all CEIN. products.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Recommendations -->
+  <section class="section pd-section">
+    <h2 class="section-title">You May Also Like</h2>
+    <div module="product_listmain_1">
+      <div class="product-grid">
+        <a href="{$product_link}" class="product-card">
+          <div class="product-image">
+            <img src="{$product_image_medium}" alt="{$product_name}">
+            <span class="quick-add">+</span>
+          </div>
+          <div class="product-detail">
+            <p class="product-name">{$product_name}</p>
+            <p class="product-price">{$product_price}</p>
+          </div>
+        </a>
+      </div>
+    </div>
+  </section>
+</div>

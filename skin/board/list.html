@@ -1,0 +1,41 @@
+<!--@layout(/layout/basic/layout.html)-->
+
+<div class="blog-page">
+  <!-- Hero Banner -->
+  <section class="blog-hero">
+    <div class="blog-hero-image">
+      <img src="/images/hero-banner.jpg" alt="CEIN Journal">
+    </div>
+    <div class="blog-hero-text">
+      <h1>We are CEIN.</h1>
+      <p>We create fashion.</p>
+    </div>
+  </section>
+
+  <!-- Last News -->
+  <section class="section">
+    <h2 class="section-title">Last News</h2>
+    <div module="board_list_1">
+      <div class="blog-grid">
+        <a href="{$link}" class="blog-card">
+          <div class="blog-card-image">
+            <img src="{$image}" alt="{$subject}">
+          </div>
+          <div class="blog-card-info">
+            <h3 class="blog-card-title">{$subject}</h3>
+            <p class="blog-card-date">{$write_date}</p>
+          </div>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Pagination -->
+  <div class="pagination">
+    <a href="#" class="pagination-prev">&larr;</a>
+    <a href="#" class="pagination-num active">1</a>
+    <a href="#" class="pagination-num">2</a>
+    <a href="#" class="pagination-num">3</a>
+    <a href="#" class="pagination-next">&rarr;</a>
+  </div>
+</div>
