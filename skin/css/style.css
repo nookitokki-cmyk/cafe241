@@ -322,20 +322,23 @@ input {
   position: absolute;
   bottom: 15px;
   right: 15px;
-  width: 18px;
-  height: 18px;
+  width: 24px;
+  height: 24px;
   z-index: 1;
   opacity: 0;
   transition: opacity 0.3s;
+  background: rgba(255,255,255,0.8);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 18px;
+  line-height: 1;
+  color: #000;
 }
 
 .product-card:hover .quick-add {
   opacity: 1;
-}
-
-.quick-add svg {
-  width: 100%;
-  height: 100%;
 }
 
 .product-detail {
@@ -772,10 +775,12 @@ input {
   right: 12px;
 }
 
-.wishlist-btn svg,
-.quick-add-btn svg {
-  width: 16px;
-  height: 16px;
+.wishlist-btn,
+.quick-add-btn {
+  font-size: 16px;
+  line-height: 1;
+  color: #000;
+  text-decoration: none;
 }
 
 .quick-add-btn {

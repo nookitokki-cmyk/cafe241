@@ -4,7 +4,7 @@
   <div module="product_detail">
     <!-- Breadcrumb -->
     <div class="breadcrumb">
-      <a href="/index.html">Home</a>
+      <a href="/">Home</a>
       <span>/</span>
       <a href="/product/list.html">Shop</a>
       <span>/</span>
@@ -20,16 +20,7 @@
         </div>
         <div class="pd-image-thumbs">
           <button class="pd-thumb active">
-            <img src="{$product_image_small}" alt="{$product_name} view 1">
-          </button>
-          <button class="pd-thumb">
-            <img src="{$product_image_small}" alt="{$product_name} view 2">
-          </button>
-          <button class="pd-thumb">
-            <img src="{$product_image_small}" alt="{$product_name} view 3">
-          </button>
-          <button class="pd-thumb">
-            <img src="{$product_image_small}" alt="{$product_name} view 4">
+            <img src="{$product_image_small}" alt="{$product_name}">
           </button>
         </div>
       </div>
@@ -39,16 +30,6 @@
         <h1 class="pd-name">{$product_name}</h1>
         <p class="pd-price">{$product_price}</p>
         <p class="pd-desc">{$product_summary}</p>
-
-        <!-- Color Options -->
-        <div class="pd-option-group">
-          <label class="pd-option-label">Color</label>
-          <div class="pd-color-options">
-            <button class="pd-color-swatch active" style="background:#000" aria-label="Black"></button>
-            <button class="pd-color-swatch" style="background:#d2b48c" aria-label="Tan"></button>
-            <button class="pd-color-swatch" style="background:#f5f5dc" aria-label="Cream"></button>
-          </div>
-        </div>
 
         <!-- Size Options -->
         <div class="pd-option-group">
@@ -66,7 +47,7 @@
         <div class="pd-option-group">
           <label class="pd-option-label">Quantity</label>
           <div class="pd-quantity">
-            <button class="pd-qty-btn" data-action="decrease">-</button>
+            <button class="pd-qty-btn" data-action="decrease">&minus;</button>
             <input type="number" class="pd-qty-input" value="1" min="1" max="99">
             <button class="pd-qty-btn" data-action="increase">+</button>
           </div>
@@ -76,21 +57,14 @@
         <button class="btn btn-dark pd-add-to-bag">Add to Bag</button>
 
         <!-- Wishlist -->
-        <button class="pd-wishlist-btn">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" width="16" height="16">
-            <path d="M12 21C12 21 3 13.5 3 8.5 3 5.4 5.4 3 8.5 3c1.7 0 3.4.8 3.5 2.1C12.1 3.8 13.8 3 15.5 3 18.6 3 21 5.4 21 8.5 21 13.5 12 21 12 21z"/>
-          </svg>
-          Add to Wishlist
-        </button>
+        <button class="pd-wishlist-btn">&hearts; Add to Wishlist</button>
 
         <!-- Accordions -->
         <div class="pd-accordions">
           <div class="pd-accordion">
             <button class="pd-accordion-header">
               <span>Product Info</span>
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" width="16" height="16">
-                <polyline points="6 9 12 15 18 9"/>
-              </svg>
+              <span class="pd-accordion-arrow">&rsaquo;</span>
             </button>
             <div class="pd-accordion-body">
               <p>{$product_detail}</p>
@@ -99,23 +73,19 @@
           <div class="pd-accordion">
             <button class="pd-accordion-header">
               <span>Shipping &amp; Returns</span>
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" width="16" height="16">
-                <polyline points="6 9 12 15 18 9"/>
-              </svg>
+              <span class="pd-accordion-arrow">&rsaquo;</span>
             </button>
             <div class="pd-accordion-body">
-              <p>Free standard shipping on orders over $150. Express shipping available at checkout. Returns accepted within 30 days of purchase. Items must be unworn with tags attached.</p>
+              <p>Free standard shipping on orders over $150. Returns accepted within 30 days.</p>
             </div>
           </div>
           <div class="pd-accordion">
             <button class="pd-accordion-header">
               <span>Repair / Renewal</span>
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" width="16" height="16">
-                <polyline points="6 9 12 15 18 9"/>
-              </svg>
+              <span class="pd-accordion-arrow">&rsaquo;</span>
             </button>
             <div class="pd-accordion-body">
-              <p>We offer complimentary repairs and renewal services for all CEIN. products. Contact our customer service team to arrange a repair or renewal for your item.</p>
+              <p>We offer complimentary repairs and renewal services for all CEIN. products.</p>
             </div>
           </div>
         </div>
@@ -123,80 +93,15 @@
     </div>
   </div>
 
-  <!-- Elegant Extra -->
+  <!-- Recommendations -->
   <section class="section pd-section">
-    <h2 class="section-title">Elegant Extra</h2>
+    <h2 class="section-title">You May Also Like</h2>
     <div module="product_listmain_1">
       <div class="product-grid">
         <a href="{$product_link}" class="product-card">
           <div class="product-image">
-            <img src="{$product_image}" alt="{$product_name}">
-            <span class="quick-add">
-              <svg viewBox="0 0 18 18" fill="none" stroke="#fff" stroke-width="1.5">
-                <line x1="9" y1="4" x2="9" y2="14"/>
-                <line x1="4" y1="9" x2="14" y2="9"/>
-              </svg>
-            </span>
-          </div>
-          <div class="product-detail">
-            <p class="product-name">{$product_name}</p>
-            <p class="product-price">{$product_price}</p>
-          </div>
-        </a>
-        <a href="{$product_link}" class="product-card">
-          <div class="product-image">
-            <img src="{$product_image}" alt="{$product_name}">
-            <span class="quick-add">
-              <svg viewBox="0 0 18 18" fill="none" stroke="#fff" stroke-width="1.5">
-                <line x1="9" y1="4" x2="9" y2="14"/>
-                <line x1="4" y1="9" x2="14" y2="9"/>
-              </svg>
-            </span>
-          </div>
-          <div class="product-detail">
-            <p class="product-name">{$product_name}</p>
-            <p class="product-price">{$product_price}</p>
-          </div>
-        </a>
-        <a href="{$product_link}" class="product-card">
-          <div class="product-image">
-            <img src="{$product_image}" alt="{$product_name}">
-            <span class="quick-add">
-              <svg viewBox="0 0 18 18" fill="none" stroke="#fff" stroke-width="1.5">
-                <line x1="9" y1="4" x2="9" y2="14"/>
-                <line x1="4" y1="9" x2="14" y2="9"/>
-              </svg>
-            </span>
-          </div>
-          <div class="product-detail">
-            <p class="product-name">{$product_name}</p>
-            <p class="product-price">{$product_price}</p>
-          </div>
-        </a>
-        <a href="{$product_link}" class="product-card">
-          <div class="product-image">
-            <img src="{$product_image}" alt="{$product_name}">
-            <span class="quick-add">
-              <svg viewBox="0 0 18 18" fill="none" stroke="#fff" stroke-width="1.5">
-                <line x1="9" y1="4" x2="9" y2="14"/>
-                <line x1="4" y1="9" x2="14" y2="9"/>
-              </svg>
-            </span>
-          </div>
-          <div class="product-detail">
-            <p class="product-name">{$product_name}</p>
-            <p class="product-price">{$product_price}</p>
-          </div>
-        </a>
-        <a href="{$product_link}" class="product-card">
-          <div class="product-image">
-            <img src="{$product_image}" alt="{$product_name}">
-            <span class="quick-add">
-              <svg viewBox="0 0 18 18" fill="none" stroke="#fff" stroke-width="1.5">
-                <line x1="9" y1="4" x2="9" y2="14"/>
-                <line x1="4" y1="9" x2="14" y2="9"/>
-              </svg>
-            </span>
+            <img src="{$product_image_medium}" alt="{$product_name}">
+            <span class="quick-add">+</span>
           </div>
           <div class="product-detail">
             <p class="product-name">{$product_name}</p>
@@ -204,133 +109,6 @@
           </div>
         </a>
       </div>
-    </div>
-  </section>
-
-  <!-- Customer Reviews -->
-  <section class="section pd-section">
-    <h2 class="section-title">Customer Reviews</h2>
-    <div class="pd-reviews">
-      <div class="pd-review-summary">
-        <div class="pd-review-rating">
-          <span class="pd-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</span>
-          <span class="pd-rating-text">4.8 out of 5</span>
-        </div>
-        <p class="pd-review-count">Based on 124 reviews</p>
-        <button class="btn btn-dark">Write a Review</button>
-      </div>
-      <div class="pd-review-list">
-        <div class="pd-review-item">
-          <div class="pd-review-header">
-            <span class="pd-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</span>
-            <span class="pd-review-date">March 15, 2026</span>
-          </div>
-          <h4 class="pd-review-title">Beautiful quality</h4>
-          <p class="pd-review-body">The fabric is luxurious and the fit is perfect. Exactly what I was looking for. Will definitely be ordering more from CEIN.</p>
-          <span class="pd-review-author">Sarah K.</span>
-        </div>
-        <div class="pd-review-item">
-          <div class="pd-review-header">
-            <span class="pd-stars">&#9733;&#9733;&#9733;&#9733;&#9734;</span>
-            <span class="pd-review-date">March 10, 2026</span>
-          </div>
-          <h4 class="pd-review-title">Love the minimalist design</h4>
-          <p class="pd-review-body">Clean lines and great attention to detail. The sizing runs slightly small, so consider ordering one size up.</p>
-          <span class="pd-review-author">Emily R.</span>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- Smart Mix Recommendations -->
-  <section class="section pd-section">
-    <h2 class="section-title">Smart Mix</h2>
-    <div module="product_listmain_2">
-      <div class="product-grid">
-        <a href="{$product_link}" class="product-card">
-          <div class="product-image">
-            <img src="{$product_image}" alt="{$product_name}">
-            <span class="quick-add">
-              <svg viewBox="0 0 18 18" fill="none" stroke="#fff" stroke-width="1.5">
-                <line x1="9" y1="4" x2="9" y2="14"/>
-                <line x1="4" y1="9" x2="14" y2="9"/>
-              </svg>
-            </span>
-          </div>
-          <div class="product-detail">
-            <p class="product-name">{$product_name}</p>
-            <p class="product-price">{$product_price}</p>
-          </div>
-        </a>
-        <a href="{$product_link}" class="product-card">
-          <div class="product-image">
-            <img src="{$product_image}" alt="{$product_name}">
-            <span class="quick-add">
-              <svg viewBox="0 0 18 18" fill="none" stroke="#fff" stroke-width="1.5">
-                <line x1="9" y1="4" x2="9" y2="14"/>
-                <line x1="4" y1="9" x2="14" y2="9"/>
-              </svg>
-            </span>
-          </div>
-          <div class="product-detail">
-            <p class="product-name">{$product_name}</p>
-            <p class="product-price">{$product_price}</p>
-          </div>
-        </a>
-        <a href="{$product_link}" class="product-card">
-          <div class="product-image">
-            <img src="{$product_image}" alt="{$product_name}">
-            <span class="quick-add">
-              <svg viewBox="0 0 18 18" fill="none" stroke="#fff" stroke-width="1.5">
-                <line x1="9" y1="4" x2="9" y2="14"/>
-                <line x1="4" y1="9" x2="14" y2="9"/>
-              </svg>
-            </span>
-          </div>
-          <div class="product-detail">
-            <p class="product-name">{$product_name}</p>
-            <p class="product-price">{$product_price}</p>
-          </div>
-        </a>
-        <a href="{$product_link}" class="product-card">
-          <div class="product-image">
-            <img src="{$product_image}" alt="{$product_name}">
-            <span class="quick-add">
-              <svg viewBox="0 0 18 18" fill="none" stroke="#fff" stroke-width="1.5">
-                <line x1="9" y1="4" x2="9" y2="14"/>
-                <line x1="4" y1="9" x2="14" y2="9"/>
-              </svg>
-            </span>
-          </div>
-          <div class="product-detail">
-            <p class="product-name">{$product_name}</p>
-            <p class="product-price">{$product_price}</p>
-          </div>
-        </a>
-        <a href="{$product_link}" class="product-card">
-          <div class="product-image">
-            <img src="{$product_image}" alt="{$product_name}">
-            <span class="quick-add">
-              <svg viewBox="0 0 18 18" fill="none" stroke="#fff" stroke-width="1.5">
-                <line x1="9" y1="4" x2="9" y2="14"/>
-                <line x1="4" y1="9" x2="14" y2="9"/>
-              </svg>
-            </span>
-          </div>
-          <div class="product-detail">
-            <p class="product-name">{$product_name}</p>
-            <p class="product-price">{$product_price}</p>
-          </div>
-        </a>
-      </div>
-    </div>
-  </section>
-
-  <!-- Recently Viewed -->
-  <section class="section pd-section">
-    <h2 class="section-title">Recently Viewed</h2>
-    <div class="product-grid" id="recentlyViewed">
-      <!-- Populated via JavaScript -->
     </div>
   </section>
 </div>
