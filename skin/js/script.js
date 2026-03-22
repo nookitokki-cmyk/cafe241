@@ -6,20 +6,20 @@
   'use strict';
 
   /* ===== Mobile Menu Toggle ===== */
-  var mobileMenuBtn = document.querySelector('.mobile-menu-btn');
-  var mobileNav = document.getElementById('mobileNav');
-  var mobileNavClose = mobileNav ? mobileNav.querySelector('.mobile-nav-close') : null;
+  var mobileMenuBtn = document.getElementById('mobileMenuBtn');
+  var mobileMenuOverlay = document.getElementById('mobileMenuOverlay');
+  var mobileMenuClose = document.getElementById('mobileMenuClose');
 
   function openMobileMenu() {
-    if (mobileNav) {
-      mobileNav.classList.add('open');
+    if (mobileMenuOverlay) {
+      mobileMenuOverlay.classList.add('active');
       document.body.style.overflow = 'hidden';
     }
   }
 
   function closeMobileMenu() {
-    if (mobileNav) {
-      mobileNav.classList.remove('open');
+    if (mobileMenuOverlay) {
+      mobileMenuOverlay.classList.remove('active');
       document.body.style.overflow = '';
     }
   }
@@ -28,13 +28,13 @@
     mobileMenuBtn.addEventListener('click', openMobileMenu);
   }
 
-  if (mobileNavClose) {
-    mobileNavClose.addEventListener('click', closeMobileMenu);
+  if (mobileMenuClose) {
+    mobileMenuClose.addEventListener('click', closeMobileMenu);
   }
 
-  if (mobileNav) {
-    mobileNav.addEventListener('click', function (e) {
-      if (e.target === mobileNav) {
+  if (mobileMenuOverlay) {
+    mobileMenuOverlay.addEventListener('click', function (e) {
+      if (e.target === mobileMenuOverlay) {
         closeMobileMenu();
       }
     });
@@ -86,15 +86,11 @@
 
   thumbs.forEach(function (thumb) {
     thumb.addEventListener('click', function () {
-      // Remove active from all thumbs
       thumbs.forEach(function (t) {
         t.classList.remove('active');
       });
-
-      // Set active
       this.classList.add('active');
 
-      // Update main image
       if (mainImage) {
         var thumbImg = this.querySelector('img');
         if (thumbImg) {
@@ -128,30 +124,12 @@
           input.value = currentVal - 1;
         }
 
-        // Trigger change event
         input.dispatchEvent(new Event('change', { bubbles: true }));
       });
     });
   }
 
   initQuantityButtons();
-
-  /* ===== Smooth Scroll ===== */
-  document.querySelectorAll('a[href^="#"]').forEach(function (anchor) {
-    anchor.addEventListener('click', function (e) {
-      var targetId = this.getAttribute('href');
-      if (targetId === '#') return;
-
-      var target = document.querySelector(targetId);
-      if (target) {
-        e.preventDefault();
-        target.scrollIntoView({
-          behavior: 'smooth',
-          block: 'start'
-        });
-      }
-    });
-  });
 
   /* ===== Product Detail Color/Size Selection ===== */
   var colorSwatches = document.querySelectorAll('.pd-color-swatch');
@@ -192,18 +170,6 @@
       e.preventDefault();
       faqCategories.forEach(function (c) {
         c.classList.remove('active');
-      });
-      this.classList.add('active');
-    });
-  });
-
-  /* ===== Filter Pills (Product List) ===== */
-  var filterPills = document.querySelectorAll('.filter-pill');
-  filterPills.forEach(function (pill) {
-    pill.addEventListener('click', function (e) {
-      e.preventDefault();
-      filterPills.forEach(function (p) {
-        p.classList.remove('active');
       });
       this.classList.add('active');
     });
