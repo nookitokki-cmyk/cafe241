@@ -30,11 +30,20 @@ mkdir -p "$LOCAL_DIR"
 # 테스트용 업로드 파일 생성
 echo "cafe241 FTP 업로드 테스트 - ${TIMESTAMP}" > "$LOCAL_DIR/$TEST_FILE"
 
+# lftp 공통 설정 (타임아웃 등)
+LFTP_SETTINGS="
+set net:timeout 10;
+set net:max-retries 2;
+set net:reconnect-interval-base 3;
+set ssl:verify-certificate no;
+set ftp:passive-mode yes;
+"
+
 # 1. 연결 및 디렉토리 목록 테스트
 echo ""
 echo "--- [1/4] FTP 연결 및 디렉토리 목록 확인 ---"
 lftp -u "$FTP_USER","$FTP_PASS" "$FTP_HOST" -e "
-set ssl:verify-certificate no;
+$LFTP_SETTINGS
 ls;
 quit
 "
@@ -44,7 +53,7 @@ echo "[1/4] 연결 성공"
 echo ""
 echo "--- [2/4] 파일 업로드 테스트 ---"
 lftp -u "$FTP_USER","$FTP_PASS" "$FTP_HOST" -e "
-set ssl:verify-certificate no;
+$LFTP_SETTINGS
 cd $REMOTE_TEST_DIR;
 put $LOCAL_DIR/$TEST_FILE;
 quit
@@ -55,7 +64,7 @@ echo "[2/4] 업로드 성공: $TEST_FILE -> $REMOTE_TEST_DIR/"
 echo ""
 echo "--- [3/4] 파일 다운로드 테스트 ---"
 lftp -u "$FTP_USER","$FTP_PASS" "$FTP_HOST" -e "
-set ssl:verify-certificate no;
+$LFTP_SETTINGS
 cd $REMOTE_TEST_DIR;
 get $TEST_FILE -o $LOCAL_DIR/downloaded-${TEST_FILE};
 quit
@@ -74,7 +83,7 @@ fi
 echo ""
 echo "--- [4/4] 원격 테스트 파일 정리 ---"
 lftp -u "$FTP_USER","$FTP_PASS" "$FTP_HOST" -e "
-set ssl:verify-certificate no;
+$LFTP_SETTINGS
 cd $REMOTE_TEST_DIR;
 rm $TEST_FILE;
 quit
