@@ -39,7 +39,7 @@ echo.
     echo open %FTP_HOST%
     echo user %FTP_USER% %FTP_PASS%
     echo binary
-    echo cd skin
+    echo cd web/skin
     echo ls
 )
 
