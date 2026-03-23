@@ -1,106 +1,88 @@
 #!/bin/bash
-# FTP 서버 설정 및 테스트 스크립트
+# 카페24 외부 FTP 서버 접속 테스트 스크립트 (lftp 사용)
 
 set -e
 
-echo "=== FTP 서버 설정 및 테스트 시작 ==="
+# 카페24 FTP 접속 정보
+FTP_HOST="ecudemo392518.ftp.cafe24.com"
+FTP_USER="ecudemo392518"
+FTP_PASS='1q2w3e4r5t!'
 
-# vsftpd 설치
-apt-get update -qq
-apt-get install -y -qq vsftpd ftp
+LOCAL_DIR="/tmp/ftp-test"
+REMOTE_TEST_DIR="/www"
+TIMESTAMP=$(date +%Y%m%d_%H%M%S)
+TEST_FILE="ftp-test-${TIMESTAMP}.txt"
 
-# 필요한 디렉토리 생성
-mkdir -p /var/ftp/pub
-mkdir -p /etc/vsftpd
+echo "=== 카페24 FTP 테스트 시작 ==="
+echo "호스트: $FTP_HOST"
+echo "사용자: $FTP_USER"
 
-# vsftpd 설정
-cat > /etc/vsftpd.conf << 'CONF'
-listen=YES
-listen_ipv6=NO
-anonymous_enable=NO
-local_enable=YES
-write_enable=YES
-local_umask=022
-dirmessage_enable=YES
-use_localtime=YES
-xferlog_enable=YES
-connect_from_port_20=YES
-xferlog_file=/var/log/vsftpd.log
-ftpd_banner=cafe241 FTP Server
-chroot_local_user=YES
-allow_writeable_chroot=YES
-pasv_enable=YES
-pasv_min_port=40000
-pasv_max_port=40100
-seccomp_sandbox=NO
-CONF
-
-echo "vsftpd 설정 완료"
-
-# FTP 테스트용 사용자 생성
-FTP_USER="ftptest"
-FTP_PASS="ftptest123"
-
-if ! id "$FTP_USER" &>/dev/null; then
-    useradd -m -s /bin/bash "$FTP_USER"
-    echo "$FTP_USER:$FTP_PASS" | chpasswd
-    echo "FTP 테스트 사용자 생성 완료: $FTP_USER"
-else
-    echo "FTP 테스트 사용자가 이미 존재합니다: $FTP_USER"
+# lftp 설치
+if ! command -v lftp &>/dev/null; then
+    echo "lftp 설치 중..."
+    apt-get update -qq
+    apt-get install -y -qq lftp
 fi
 
-# 테스트용 파일 생성
-TEST_DIR="/home/$FTP_USER"
-echo "cafe241 FTP 테스트 파일입니다." > "$TEST_DIR/test.txt"
-chown "$FTP_USER:$FTP_USER" "$TEST_DIR/test.txt"
+# 로컬 작업 디렉토리 생성
+mkdir -p "$LOCAL_DIR"
 
-# vsftpd 서비스 시작
-service vsftpd restart 2>/dev/null || /usr/sbin/vsftpd &
-sleep 1
+# 테스트용 업로드 파일 생성
+echo "cafe241 FTP 업로드 테스트 - ${TIMESTAMP}" > "$LOCAL_DIR/$TEST_FILE"
 
-echo "=== FTP 서버 시작 완료 ==="
-
-# FTP 연결 테스트
-echo "=== FTP 연결 테스트 ==="
-
-ftp -n localhost <<FTP_COMMANDS
-user $FTP_USER $FTP_PASS
-pwd
-ls
-get test.txt /tmp/ftp-downloaded.txt
+# 1. 연결 및 디렉토리 목록 테스트
+echo ""
+echo "--- [1/4] FTP 연결 및 디렉토리 목록 확인 ---"
+lftp -u "$FTP_USER","$FTP_PASS" "$FTP_HOST" -e "
+set ssl:verify-certificate no;
+ls;
 quit
-FTP_COMMANDS
+"
+echo "[1/4] 연결 성공"
 
-if [ -f /tmp/ftp-downloaded.txt ]; then
-    echo "FTP 다운로드 테스트 성공!"
+# 2. 파일 업로드 테스트
+echo ""
+echo "--- [2/4] 파일 업로드 테스트 ---"
+lftp -u "$FTP_USER","$FTP_PASS" "$FTP_HOST" -e "
+set ssl:verify-certificate no;
+cd $REMOTE_TEST_DIR;
+put $LOCAL_DIR/$TEST_FILE;
+quit
+"
+echo "[2/4] 업로드 성공: $TEST_FILE -> $REMOTE_TEST_DIR/"
+
+# 3. 파일 다운로드 테스트
+echo ""
+echo "--- [3/4] 파일 다운로드 테스트 ---"
+lftp -u "$FTP_USER","$FTP_PASS" "$FTP_HOST" -e "
+set ssl:verify-certificate no;
+cd $REMOTE_TEST_DIR;
+get $TEST_FILE -o $LOCAL_DIR/downloaded-${TEST_FILE};
+quit
+"
+
+if [ -f "$LOCAL_DIR/downloaded-${TEST_FILE}" ]; then
+    echo "[3/4] 다운로드 성공"
     echo "다운로드된 파일 내용:"
-    cat /tmp/ftp-downloaded.txt
-    rm -f /tmp/ftp-downloaded.txt
+    cat "$LOCAL_DIR/downloaded-${TEST_FILE}"
 else
-    echo "FTP 다운로드 테스트 실패!"
+    echo "[3/4] 다운로드 실패!"
     exit 1
 fi
 
-# 업로드 테스트
-echo "FTP 업로드 테스트 파일입니다." > /tmp/ftp-upload.txt
-
-ftp -n localhost <<FTP_COMMANDS
-user $FTP_USER $FTP_PASS
-put /tmp/ftp-upload.txt upload-test.txt
-ls
+# 4. 업로드한 테스트 파일 정리 (원격 삭제)
+echo ""
+echo "--- [4/4] 원격 테스트 파일 정리 ---"
+lftp -u "$FTP_USER","$FTP_PASS" "$FTP_HOST" -e "
+set ssl:verify-certificate no;
+cd $REMOTE_TEST_DIR;
+rm $TEST_FILE;
 quit
-FTP_COMMANDS
+"
+echo "[4/4] 원격 테스트 파일 삭제 완료"
 
-if [ -f "$TEST_DIR/upload-test.txt" ]; then
-    echo "FTP 업로드 테스트 성공!"
-    rm -f /tmp/ftp-upload.txt
-else
-    echo "FTP 업로드 테스트 실패!"
-    rm -f /tmp/ftp-upload.txt
-    exit 1
-fi
+# 로컬 임시 파일 정리
+rm -rf "$LOCAL_DIR"
 
+echo ""
 echo "=== 모든 FTP 테스트 완료 ==="
-echo "FTP 사용자: $FTP_USER"
-echo "FTP 비밀번호: $FTP_PASS"
-echo "FTP 포트: 21"
