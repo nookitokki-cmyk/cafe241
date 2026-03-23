@@ -30,15 +30,18 @@ echo   CSS   : /skin/css/
 echo   JS    : /skin/js/
 echo   이미지 : /skin/images/
 echo.
+echo 로그인 후 skin 폴더로 이동됩니다.
+echo FTP 명령어: ls(목록), get(다운), put(업로드), bye(종료)
+echo.
 
-:: FTP 명령 파일 생성
-echo open %FTP_HOST%> "%TEMP%\cafe24ftp.txt"
-echo %FTP_USER%>> "%TEMP%\cafe24ftp.txt"
-echo %FTP_PASS%>> "%TEMP%\cafe24ftp.txt"
-echo cd skin>> "%TEMP%\cafe24ftp.txt"
-echo dir>> "%TEMP%\cafe24ftp.txt"
-echo prompt>> "%TEMP%\cafe24ftp.txt"
-echo bye>> "%TEMP%\cafe24ftp.txt"
+:: FTP 명령 파일 생성 (로그인 + skin 이동까지만)
+> "%TEMP%\cafe24ftp.txt" (
+    echo open %FTP_HOST%
+    echo user %FTP_USER% %FTP_PASS%
+    echo binary
+    echo cd skin
+    echo ls
+)
 
 :: FTP 접속
 ftp -n -s:"%TEMP%\cafe24ftp.txt"
